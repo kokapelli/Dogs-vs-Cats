@@ -27,8 +27,8 @@ from keras.callbacks import ReduceLROnPlateau
 from keras.optimizers import Adam
 
 
-TRAIN_DIR = 'train/'
-TEST_DIR = 'test/'
+TRAIN_DIR = 'C:/Users/Kukus/Desktop/Kaggle/Datasets/Dogs vs Cats/train/'
+TEST_DIR = 'C:/Users/Kukus/Desktop/Kaggle/Datasets/Dogs vs Cats/test/'
 IMG_SIZE = 150
 TOTAL_PIXELS = IMG_SIZE * IMG_SIZE
 train_images_dogs_cats = [TRAIN_DIR+i for i in os.listdir(TRAIN_DIR)]
@@ -49,8 +49,7 @@ def prepare_data(list_of_images):
     
     for image in tqdm(list_of_images):
         img = cv2.resize(cv2.imread(image), (IMG_SIZE,IMG_SIZE), interpolation=cv2.INTER_CUBIC)
-        norm_img = img/255
-        x.append(norm_img.astype('float32'))
+        x.append(img)
     
     for i in list_of_images:
         if 'dog' in i:
